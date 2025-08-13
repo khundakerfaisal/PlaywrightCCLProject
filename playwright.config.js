@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  timeout:3000,
+  timeout: 3000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -27,9 +27,15 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless:false,
+    viewport: null,
+    launchOptions: {
+      args: ['--start-maximized'], // Chrome/Edge full window
+      headless: false
+    },
+
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://192.168.3.187:7071/web/login',
+    // baseURL: 'http://192.168.3.187:7071/web/login',
+
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -39,8 +45,22 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+    
+      use: {
+        // copy Desktop Chrome settings except viewport & deviceScaleFactor
+        ...(() => {
+          const { deviceScaleFactor, viewport, ...rest } = devices['Desktop Chrome'];
+          return rest;
+        })(),
+        viewport: null, // keeps maximize working
+        launchOptions: {
+          args: ['--start-maximized'],
+          headless: false
+        }
+      },
     },
+
+
 
     // {
     //   name: 'firefox',
