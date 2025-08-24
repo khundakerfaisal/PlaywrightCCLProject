@@ -1,16 +1,14 @@
-import { test, except } from "@playwright/test"
-import login from "../Pages/login";
+import { test, expect } from "@playwright/test";
+import LoginPage from "../Pages/login";
 
 test("User can login successfully", async ({ page }) => {
+    const loginPage = new LoginPage(page);
 
+    await loginPage.goto();
 
-    const loginUser = new login(page);
-    await page.goto("http://192.168.3.187:7071/web/login");
-    // await loginUser.cclLogin("admin","1234")
-    const userData={ userName:"Admin", password:"1234" };
+    await loginPage.login("Admin", "1234");
+    await expect(page.getByText("SMS API Configuration")).toBeVisible();
 
-
-
-    await loginUser.cclLogin(userData);
+    //   await expect(page).toHaveURL(/.*dashboard/); 
 
 });
