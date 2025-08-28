@@ -8,7 +8,7 @@ test("User can login successfully", async ({ page }) => {
     await loginPage.goto();
     await loginPage.login("Admin", "1234");
     await expect(page.getByText("SMS API Configuration")).toBeVisible();
-    writeJSONFile()
+    // writeJSONFile()
 
     //   await expect(page).toHaveURL(/.*dashboard/); 
 
