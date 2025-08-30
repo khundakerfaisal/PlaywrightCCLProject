@@ -17,100 +17,39 @@ class Region {
         this.redirectPage = page.getByRole('link', { name: 'Region Configuration' });
 
     }
-    // async goto() {
-    //     await this.page.goto("http://192.168.3.187:7071/web/login");
-    // }
+
+    selectDropdownValue(employeeName) {
+        return this.page.getByRole('link', { name: employeeName });
+    }
+
 
     async cclRegion() {
-        const regionNames = ["Bandarban",
-            "Barguna",
-            "Barishal",
-            "Bhola",
-            "Bogura",
+        const regionNames = [
             "Brahmanbaria",
-            "Chandpur",
-            "Chapai Nawabganj",
-            "Chattogram",
-            "Chuadanga",
-            "Cox's Bazar",
-            "Cumilla",
-            "Dhaka",
-            "Dinajpur",
-            "Faridpur",
-            "Feni",
-            "Gaibandha",
-            "Gazipur",
-            "Gopalganj",
-            "Habiganj",
-            "Jamalpur",
-            "Jashore",
-            "Jhalokati",
-            "Jhenaidah",
-            "Joypurhat",
-            "Khagrachhari",
-            "Khulna",
-            "Khulna02",
-            "Kishoreganj",
-            "Kurigram",
-            "Kushtia",
-            "Lakshmipur",
-            "Lalmonirhat",
-            "Madaripur",
-            "Magura",
-            "Manikganj",
-            "Meherpur",
-            "Moulvibazar",
-            "Munshiganj",
-            "Mymensingh",
-            "Naogaon",
-            "Narail",
-            "Narayanganj",
-            "Narsingdi",
-            "Natore",
-            "Netrokona",
-            "Nilphamari",
-            "Noakhali",
-            "Pabna",
-            "Panchagarh",
-            "Patuakhali",
-            "Pirojpur",
-            "Rajbari",
-            "Rajshahi",
-            "Rangamati",
-            "Rangpur",
-            "Satkhira",
-            "Shariatpur",
-            "Sherpur",
-            "Sirajganj",
-            "Sunamganj",
-            "Sylhet",
-            "Tangail",
-            "Thakurgaon"]
+            "Chandpur"
+        ]
 
 
         await this.defaultRootMenu.click()
         await this.salesMenuSelection.click();
         await this.ConfigurationMenuSelection.click();
         await this.regionMenuSelection.click();
-        await this.createNewButton.click();
+        // await this.createNewButton.click();
         for (let i = 0; i < regionNames.length; i++) {
+            await this.createNewButton.click();
             const regionName = regionNames[i];
-            const regionCode = 'R00${i+2}'
+            const regionCode = `R00${i + 7}`;
             await this.textRegionClick.click();
             await this.textRegionInput.fill(regionName);
             await this.textRegionCodeClick.click();
             await this.textRegionCodeInput.fill(regionCode);
-             await this.selectDropdown.click();
+
             const employeeDropdownValues = ["Abdul Karim(CCL21033)",
                 "Amam Hasan(CCL60296)",
                 "Abdul Karim(CCL21033)"];
-                const employeeDropDownSelect=employeeDropdownValues[i%employeeDropdownValues.length];
-
-                await this.selectDropdown.fill(employeeDropDownSelect);
-
-
-           
-            // await this.selectDropdownValue.click();
+            const employeeDropDownSelect = employeeDropdownValues[i % employeeDropdownValues.length];
+            await this.selectDropdown.click();
+            await this.selectDropdownValue(employeeDropDownSelect).click();
             await this.clickSubmitButton.click();
             await this.redirectPage.click();
 
