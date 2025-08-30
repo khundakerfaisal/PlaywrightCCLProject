@@ -4,6 +4,7 @@ import Region from "../../Pages/SalesModule/region";
 
 test.describe("Generate Region", () => {
     test.beforeEach(async ({ page }) => {
+        page.setDefaultTimeout(0);
         const loginPage = new LoginPage(page);
         await loginPage.goto();
         await loginPage.login("Admin", "1234");

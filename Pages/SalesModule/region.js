@@ -25,11 +25,11 @@ class Region {
 
     async cclRegion() {
         const regionNames = [
-            "Brahmanbaria",
-            "Chandpur"
+            "Jhenaidah", "Joypurhat",
+            "Khagrachhari", "Khulna", "Khulna02", "Kishoreganj", "Kurigram", "Kushtia", "Lakshmipur", "Lalmonirhat", "Madaripur", "Magura", "Manikganj", "Meherpur", "Moulvibazar", "Munshiganj", "Mymensingh", "Naogaon", "Narail", "Narayanganj", "Narsingdi", "Natore", "Netrokona",
+            "Nilphamari", "Noakhali", "Pabna", "Panchagarh", "Patuakhali", "Pirojpur", "Rajbari", "Rajshahi", "Rangamati", "Rangpur", "Satkhira", "Shariatpur", "Sherpur", "Sirajganj", "Sunamganj", "Sylhet", "Tangail", "Thakurgaon"
+
         ]
-
-
         await this.defaultRootMenu.click()
         await this.salesMenuSelection.click();
         await this.ConfigurationMenuSelection.click();
@@ -38,7 +38,7 @@ class Region {
         for (let i = 0; i < regionNames.length; i++) {
             await this.createNewButton.click();
             const regionName = regionNames[i];
-            const regionCode = `R00${i + 7}`;
+            const regionCode = `R00${i + 63}`;
             await this.textRegionClick.click();
             await this.textRegionInput.fill(regionName);
             await this.textRegionCodeClick.click();
@@ -58,3 +58,5 @@ class Region {
     }
 }
 export default Region;
+
+// Run Command :: npx playwright test tests/SalesModuleTestRunner salesRegion.spec.js
