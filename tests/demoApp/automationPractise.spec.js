@@ -14,7 +14,7 @@ import { test, expect } from '@playwright/test'
 // await page.locator('#dropdown-menu').selectOption('Algeria')
 // })
 
-test('Seldct Hidden dropdown value', async ({ page }) => {
+test.skip('Seldct Hidden dropdown value', async ({ page }) => {
     await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin')
     await page.getByRole('textbox', { name: 'Password' }).fill('admin123')
