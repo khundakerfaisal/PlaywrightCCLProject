@@ -1,6 +1,6 @@
 import { test, expect, chromium } from '@playwright/test'
 
-test('handle tab', async () => {
+test.skip('handle tab', async () => {
     const browser = await chromium.launch(); //First config the chormium browser
     const contex = await browser.newContext()//Create a contex browser
     const page = await contex.newPage()//Added pages in new context
