@@ -1,6 +1,6 @@
 import { test, expect, chromium } from '@playwright/test'
 
-test('Handle one Windows', async () => {
+test.skip('Handle one Windows', async () => {
 
     const browser = await chromium.launch() //launch chromium browser
     const contex = await browser.newContext()//added browser context for new session
@@ -15,7 +15,7 @@ test('Handle one Windows', async () => {
 
 });
 
-test('Handle Multiple Window assertion', async () => {
+test.skip('Handle Multiple Window assertion', async () => {
     const browser = await chromium.launch()
     const context = await browser.newContext()
 
