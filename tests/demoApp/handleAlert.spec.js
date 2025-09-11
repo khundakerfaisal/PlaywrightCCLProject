@@ -1,9 +1,21 @@
 import { test, expect } from '@playwright/test'
 
-test.skip('Handle alert',async({page})=>{
+test('Handle alert New', async ({ page }) => {
+    await page.goto("https://demoqa.com/alerts");
+
+    page.on('dialog', async dialog => {
+        await dialog.accept();
+    });
+    await page.locator('#alertButton').click();
+
+});
+
+
+
+test.skip('Handle alert', async ({ page }) => {
     await page.goto("https://testautomationpractice.blogspot.com/")
 
-    page.on('dialog', async dialog=>{
+    page.on('dialog', async dialog => {
         expect(dialog.message()).toContain('I am an alert box!')
         dialog.accept()
 

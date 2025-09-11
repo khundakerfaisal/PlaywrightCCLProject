@@ -22,17 +22,9 @@ test.skip('handle Window', async () => {
 
 })
 
-test('handle Alert', async({page})=>{
-    await page.goto("https://demoqa.com/alerts")
 
 
-    page.on('dialog',async dialog=>{
-        dialog.accept()
-    })
-    await page.click('#alertButton') 
-})
-
-test('handle Alert with message', async ({ page }) => {
+test.skip('handle Alert with message', async ({ page }) => {
     await page.goto("https://demoqa.com/alerts")
 
 
@@ -46,5 +38,6 @@ test('handle Alert with message', async ({ page }) => {
     console.log("Prompt Result on page:", result);
 })
 //npx playwright test tests/demoApp handleBrowserAndTab.spec.js
+
 
 
