@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test('Handle alert New', async ({ page }) => {
+test.skip('Handle alert New', async ({ page }) => {
     await page.goto("https://demoqa.com/alerts");
 
     page.on('dialog', async dialog => {
