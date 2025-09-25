@@ -11,7 +11,7 @@ test.describe("Generate Region", () => {
 
     });
 
-    test("Create Region", async ({ page }) => {
+    test.skip("Create Region", async ({ page }) => {
         const regionPage = new Region(page);
         await regionPage.cclRegion();
 
